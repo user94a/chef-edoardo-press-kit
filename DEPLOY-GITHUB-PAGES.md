@@ -27,18 +27,50 @@ git push -u origin main
 
 ### 3. Abilita GitHub Pages con GitHub Actions
 
-- Nel repo: **Settings** → **Pages**.
-- In **Build and deployment**, sezione **Source** scegli **GitHub Actions**.
+GitHub può pubblicare il sito in due modi: da un branch (es. `main`) o **con GitHub Actions**. Noi usiamo il secondo, perché il workflow che abbiamo creato fa build + deploy.
+
+**Cosa fare (passo per passo):**
+
+1. Apri il repo su GitHub: **https://github.com/user94a/chef-edoardo-press-kit**
+2. Clicca sulla tab **Settings** (in alto, accanto a Code / Issues / Pull requests).
+3. Nella barra laterale sinistra, sotto "Code and automation", clicca **Pages**.
+4. Nella sezione **Build and deployment** trovi **Source** (da dove GitHub prende i file da pubblicare).
+5. Nel menu a tendina di Source seleziona **GitHub Actions** (non "Deploy from a branch").
+
+Non serve salvare: la scelta viene applicata subito. Da questo momento, quando il workflow "Deploy to GitHub Pages" viene eseguito (automaticamente o a mano), GitHub pubblicherà l’output sul tuo sito.
 
 ### 4. Esegui il primo deploy
 
-- Il workflow parte automaticamente a ogni push su `main`.
-- Per lanciarlo a mano: **Actions** → **Deploy to GitHub Pages** → **Run workflow**.
+- **Automatico:** dopo il push su `main`, in **Actions** parte il workflow "Deploy to GitHub Pages"; attendi che finisca (icona verde).
+- **Manuale:** vai in **Actions** → clicca "Deploy to GitHub Pages" → **Run workflow** → **Run workflow** (pulsante verde).
 
 ### 5. Controlla il risultato
 
 - Dopo qualche minuto il sito sarà disponibile su:
   - **https://user94a.github.io/chef-edoardo-press-kit/**
+
+---
+
+## Il sito non parte (404 / pagina vuota)
+
+Controlla in ordine:
+
+1. **Source in Pages**
+   - **Settings** → **Pages** → **Build and deployment** → **Source** deve essere **GitHub Actions** (non "Deploy from a branch").
+
+2. **Workflow eseguito con successo**
+   - Vai su **Actions**: https://github.com/user94a/chef-edoardo-press-kit/actions  
+   - Apri l’ultima run di **"Deploy to GitHub Pages"**.  
+   - Se è **rossa** (fallita), clicca sulla run e controlla quale step è fallito (es. "Install dependencies" o "Build"); il messaggio di errore è lì.  
+   - Se non vedi nessuna run, il workflow non è mai partito: fai un nuovo push su `main` (o `master`) oppure **Actions** → "Deploy to GitHub Pages" → **Run workflow**.
+
+3. **Branch giusto**
+   - Il workflow parte solo su push a **main** o **master**. Se lavori su un altro branch, fai merge su `main` e push, oppure lancia il workflow a mano da **Actions** → **Run workflow** (usa il branch che ha il codice).
+
+4. **Dopo aver cambiato Source**
+   - Se hai appena impostato Source su **GitHub Actions**, esegui una volta il workflow a mano: **Actions** → "Deploy to GitHub Pages" → **Run workflow** → **Run workflow**.
+
+Se il **Build** fallisce (es. errore `pnpm` o `next build`), copia il messaggio di errore dalla tab Actions e usalo per correggere (es. dipendenze o versione Node).
 
 ---
 
