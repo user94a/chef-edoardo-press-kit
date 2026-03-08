@@ -170,7 +170,7 @@ const pressLinks = {
     "https://www.corsenetinfos.corsica/A-Bonifacio-une-Finestra-avec-vue-sur-sur-l-etoile-Michelin-d-un-jeune-chef-italien_a84339.html",
   tavolozzaDelGusto:
     "https://latavolozzadelgustodidracopulos.blogspot.com/2025/04/ristorante-finestra-by-italo-bassi.html",
-  gastronomie: "/images/gastronomie-article.jpeg",
+  gastronomie: `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/images/gastronomie-article.jpeg`,
 }
 
 // Function to detect browser language and map to available languages
@@ -236,7 +236,7 @@ export default function Home() {
           <div className="mb-8 md:mb-0">
             <div className="relative h-64 w-64 overflow-hidden rounded-full border border-black/10 md:h-80 md:w-80">
               <Image
-                src="/images/edoardo-menna.png"
+                src={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/images/edoardo-menna.png`}
                 alt="Edoardo Menna"
                 fill
                 sizes="(max-width: 768px) 16rem, 20rem"
