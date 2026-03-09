@@ -26,6 +26,7 @@ const translations = {
     corseNetInfos: "Corse Net Infos",
     tavolozzaDelGusto: "La Tavolozza del Gusto",
     gastronomie: "Gastronomie",
+    scattiDiGusto: "Scatti Di Gusto",
     viewArticle: "Vedi Articolo",
     bio: {
       intro:
@@ -71,6 +72,7 @@ const translations = {
     corseNetInfos: "Corse Net Infos",
     tavolozzaDelGusto: "La Tavolozza del Gusto",
     gastronomie: "Gastronomie",
+    scattiDiGusto: "Scatti Di Gusto",
     viewArticle: "View Article",
     bio: {
       intro:
@@ -116,6 +118,7 @@ const translations = {
     corseNetInfos: "Corse Net Infos",
     tavolozzaDelGusto: "La Tavolozza del Gusto",
     gastronomie: "Gastronomie",
+    scattiDiGusto: "Scatti Di Gusto",
     viewArticle: "Voir l'Article",
     bio: {
       intro:
@@ -171,6 +174,7 @@ const pressLinks = {
   tavolozzaDelGusto:
     "https://latavolozzadelgustodidracopulos.blogspot.com/2025/04/ristorante-finestra-by-italo-bassi.html",
   gastronomie: "images/gastronomie-article.jpeg",
+  scattiDiGusto: "https://www.scattidigusto.it/ristorante-finestra-a-bonifacio-in-corsica",
 }
 
 // Function to detect browser language and map to available languages
@@ -339,13 +343,21 @@ export default function Home() {
                   >
                     {t.tavolozzaDelGusto} (IT)
                   </Link>
-                  <Link
+                  <a
                     href={pressLinks.gastronomie}
                     className="text-sm hover:underline"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
                     {t.gastronomie} (FR)
+                  </a>
+                  <Link
+                    href={pressLinks.scattiDiGusto}
+                    className="text-sm hover:underline"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {t.scattiDiGusto} (IT)
                   </Link>
                 </div>
               </div>
